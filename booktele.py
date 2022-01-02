@@ -37,7 +37,7 @@ async def animelist(bot: Client, m: Message):
     #search = input()
     #url of the age to be scraped
     print(search1)
-    url = f'http://gen.lib.rus.ec/search.php?req={search1}'
+    url = f'http://gen.lib.rus.ec/search.php?req={search1}&phrase=1&view=simple&column=def&sort=year&sortmode=DESC'
     res = requests.get(url) #requests to the server and gets response
     res.raise_for_status()  #raises error if request is rejected or due to any other reason
 
