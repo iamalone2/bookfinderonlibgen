@@ -171,7 +171,7 @@ async def animelist(bot: Client, m: Message):
         print(f"{current * 100 / total:.1f}%")
 
     await m.reply_document(f'{nameofbook}.pdf',caption ='downloaded book by IAMALONE bot',progress = progress )
-    time.slee(2)
+    time.sleep(2)
     os.remove(f'{nameofbook}.pdf')
     
 
