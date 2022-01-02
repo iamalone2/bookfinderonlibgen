@@ -16,3 +16,5 @@ TgCrypto==1.2.2
 websockets==9.1
 yt-dlp==2021.7.24
 olefile
+pandas
+
