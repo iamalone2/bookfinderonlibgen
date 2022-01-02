@@ -1,1 +1,1 @@
-worker: python cwt.py
+worker: python booktele.py
