@@ -27,7 +27,7 @@ async def start(bot, update):
     await update.reply_text("Hi I am book finder and downloader Press /book_download <book_name>")
 
 
-@bot.on_message(filters.command(['book_download'])& ~filters.edited))
+@bot.on_message(filters.command(['book_download'])& ~filters.edited)
 async def animelist(bot: Client, m: Message):
     search = await m.reply_text("**Enter the Book Name To find **")
     input1: Message = await bot.listen(search.chat.id, timeout=600) 
