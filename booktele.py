@@ -149,7 +149,7 @@ async def animelist(bot: Client, m: Message):
     download_page_link = input3.text
     
     editable4= await m.reply_text("Now send the Pdf or epub in which format is the book")
-    input6 = message = await bot.listen(editable.chat.id, timeout = 700)
+    input6 = message = await bot.listen(editable4.chat.id, timeout = 700)
     raw_text6 = input6.text
 
     #Scraping another page which was gained from link
