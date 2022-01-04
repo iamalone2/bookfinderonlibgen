@@ -148,7 +148,7 @@ async def animelist(bot: Client, m: Message):
     input3: Message = await bot.listen(search4.chat.id, timeout=600)    
     download_page_link = input3.text
     
-    editable4= await m.reply_text("Now send the Pdf or epub in which format is the book")
+    editable4= await m.reply_text("Now send the name with extension Pdf or epub in which format is the book is")
     input6 = message = await bot.listen(editable4.chat.id, timeout = 700)
     raw_text6 = input6.text
 
