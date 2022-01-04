@@ -144,9 +144,13 @@ async def animelist(bot: Client, m: Message):
     #link = input3.text
     #print(int(link))
     
-    search4 = await m.reply_text("**Enter the link you would like to download**")
-    input3: Message = await bot.listen(search4.chat.id, timeout=600) 
+    search4 = await m.reply_text("**Enter the link you would like to download **")
+    input3: Message = await bot.listen(search4.chat.id, timeout=600)    
     download_page_link = input3.text
+    
+    editable4= await m.reply_text("Now send the Pdf or epub in which format is the book")
+    input6 = message = await bot.listen(editable.chat.id, timeout = 700)
+    raw_text6 = input6.text
 
     #Scraping another page which was gained from link
     download_page = requests.get(download_page_link)
@@ -157,22 +161,24 @@ async def animelist(bot: Client, m: Message):
     for i in range(len(page_soup.find_all('a'))):
         if (page_soup.find_all('a')[i].getText()) == 'GET':
             download_link = page_soup.find_all('a')[i]['href']
-    book_name = 'abcd'
+    #book_name = 'abcd'
+    cmd  = f'yt-dlp -o "{raw_text6}" "{download_link}" --external-downloader aria2c --downloader-args "aria2c: -x 16 -j 32" '
+    os.system(cmd)
     #Writing data on the csv file
-    def download_file(download_url):
-        response = urllib.request.urlopen(download_url)
-        file = open('%s.pdf'%nameofbook, 'wb')
-        file.write(response.read())
-        file.close()
-        print("Completed")
+    #def download_file(download_url):
+    #    response = urllib.request.urlopen(download_url)
+    #    file = open('%s.pdf'%nameofbook, 'wb')
+    #    file.write(response.read())
+    #    file.close()
+    #    print("Completed")
     
-    download_file(download_link)
+    #download_file(download_link)
     def progress(current, total):
         print(f"{current * 100 / total:.1f}%")
 
-    await m.reply_document(f'{nameofbook}.pdf',caption ='downloaded book by IAMALONE bot',progress = progress )
+    await m.reply_document(f'{raw_text6}',caption ='downloaded book by IAMALONE bot',progress = progress )
     time.sleep(2)
-    os.remove(f'{nameofbook}.pdf')
+    os.remove(f'{raw_text6}')
     
 
 
